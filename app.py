@@ -6,6 +6,7 @@ from app.routes import bp
 # Permet à Python de retrouver vos modules internes
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
+
 app = Flask(__name__)
 app.register_blueprint(bp)
 

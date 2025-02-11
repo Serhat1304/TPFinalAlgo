@@ -16,7 +16,9 @@ def analyze_sentiments():
             "tweet": tweet,
             "sentiment": "positive"
         }
+
         for tweet in tweets
     ]
 
     return jsonify({"results": results})
+
