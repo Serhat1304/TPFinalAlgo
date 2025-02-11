@@ -16,7 +16,6 @@ def analyze_sentiments():
             "tweet": tweet,
             "sentiment": "positive"
         }
-
         for tweet in tweets
     ]
 
