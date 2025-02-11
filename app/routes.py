@@ -1,7 +1,9 @@
+
 from flask import Blueprint, jsonify, request
 import joblib
 from app.db import get_db_connection, save_tweet
 from app.models import entrainer_modele
+
 
 bp = Blueprint('api', __name__)
 
@@ -14,6 +16,7 @@ def entrainer():
 
 @bp.route('/analyze', methods=['POST'])
 def analyze_sentiments():
+
     model = joblib.load('sentiment.pkl')
 
     tweets = request.json.get('tweets', [])
@@ -28,3 +31,4 @@ def analyze_sentiments():
         save_tweet(score, scores[score] == 1, scores[score] == -1)
 
     return jsonify(scores)
+

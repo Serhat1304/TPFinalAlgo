@@ -1,13 +1,6 @@
-import sys
-import os
+from app import create_app
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+app = create_app()
 
-from app.routes import bp
-from flask import Flask
-
-app = Flask(__name__)
-
-app.register_blueprint(bp)
 if __name__ == "__main__":
     app.run(debug=True)
