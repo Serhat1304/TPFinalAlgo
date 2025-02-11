@@ -10,6 +10,7 @@ def create_connection():
     try:
         connection = mysql.connector.connect(
             host=os.getenv('DB_HOST'),
+            port=os.getenv('DB_PORT'),
             database=os.getenv('DB_NAME'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD')
@@ -38,9 +39,3 @@ def create_table(connection):
     except Error as e:
         print(f"erreur: {e}")
 
-
-if __name__ == "__main__":
-    connection = create_connection()
-    if connection:
-        create_table(connection)
-        connection.close()
