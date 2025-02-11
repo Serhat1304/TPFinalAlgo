@@ -2,8 +2,19 @@ import os
 from dotenv import load_dotenv
 import mysql.connector
 from mysql.connector import Error
+import pandas as pd
 
 load_dotenv()
+
+
+def get_annotated_tweets():
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+    cursor.execute("SELECT text, positive, negative FROM tweets")
+    rows = cursor.fetchall()
+    connection.close()
+
+    return pd.DataFrame(rows)
 
 
 def get_db_connection():
